@@ -1,0 +1,36 @@
+:root{
+    --margin-top: 60px;
+    --h2-size: 28px;
+}
+
+header{
+    padding: 40px;
+}
+
+header div div nav ul > li{
+}
+
+#highlights{
+    margin-top: var(--margin-top);
+}
+
+#movies{
+
+}
+
+
+#series{
+
+}
+
+#graphs{
+
+}
+
+footer{
+
+}
+
+#highlights h2{
+    font-size: var(--h2-size);
+}
