@@ -15,7 +15,7 @@ header{
    transition: 0.4s ease;
 }
 
-img:hover{
+#movies img:hover{
     transform: scale(0.95);
 }
 
@@ -46,6 +46,10 @@ footer > div:nth-of-type(1){
 footer > div:nth-of-type(2) > div:nth-of-type(3) > div{
     display: flex;
     gap: 20px;
+}
+
+#highlights img{
+    width: 20px;
 }
 
 #highlights h2{
