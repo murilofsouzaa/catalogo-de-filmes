@@ -21,13 +21,21 @@ function setUserInfo(event) {
     email: userEmailInput.value,
     password: userPasswordInput.value
   };
-  localStorage.setItem('user', JSON.stringify(user));
-}
 
+  const existingUser = getUserInfo();
+
+  if(existingUser.email != user.email){
+      localStorage.setItem('user', JSON.stringify(user));
+  }else{
+        alert('Já existe um usuário com esse nome');
+    }
+}
 function getUserInfo() {
   const userString = localStorage.getItem('user');
   return JSON.parse(userString);
+
 }
+
 
 close_btn.addEventListener('click', () => {
   loginPopUp.classList.add('hidden');
