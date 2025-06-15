@@ -12,10 +12,25 @@ header{
 }
 
 #movies{
-
+    /*...*/
 }
 
 #graphs{
+    /*...*/
+}
+
+header > div div:nth-of-type(3){
+    gap: 20px;
+}
+
+button{
+    border: none;
+    padding: 16px;
+    
+}
+
+footer > div:nth-of-type(2) div:nth-of-type(2) p{
+    line-height: 28px;
 
 }
 
@@ -32,4 +47,5 @@ footer > div:nth-of-type(2) > div:nth-of-type(3) > div{
 #highlights h2{
     font-size: var(--h2-size);
 }
+
 

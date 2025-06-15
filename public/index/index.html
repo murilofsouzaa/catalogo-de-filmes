@@ -10,91 +10,105 @@
 
     <link rel="stylesheet" href="../../src/css/vendor/reset.css">
     <link rel="stylesheet" href="../../src/css/global.css">
+    <link rel="stylesheet" href="../../src/css/login.css">
     <link rel="stylesheet" href="index.css">
     
 </head>
 <body>
-    <header class="container-fluid" id="home">
-        <div class="row">
-            <div class="col-4 d-flex justify-content-center">
-                <h1 class="fs-1 fw-bolder">Filmera</h1>
-            </div>
-
-            <div class="col-4 d-flex justify-content-center">
-                <input type="text" id="search-input" class="p-2 w-100">
-            </div>
-            
-            <div class="sign-in col-4 d-flex justify-content-center align-items-center">
-                <button>Cadastrar</button> ou <button>Login</button>
-            </div>
-        </div>
-    </header>
-    
-    <nav>
-        <ul class="d-flex gap-5 flex-row justify-content-center">
-            <a href="#home" class="text-decoration-none"><li>Home</li></a>
-            <a href="#highlights" class="text-decoration-none"><li>Destaques</li></a>
-            <a href="#movies" class="text-decoration-none"><li>Filmes</li></a>
-            <a href="#author" class="text-decoration-none"><li>Aluno</li></a>
-        </ul>
-    </nav>
-
-    <div class="d-flex justify-content-center">
-        <div id="line-separator"></div>
-    </div>
-
-    <section class=" mb-5">
-        <h2 class="fs-2 text-center mb-5 mt-5">Destaques</h2>
-        <div id="highlights" class="d-flex flex-column justify-content-center align-items-center"></div>
+    <div class="main-container">
+        <header class="container-fluid" id="home">
+            <div class="row">
+                <div class="col-4 d-flex justify-content-center">
+                    <h1 class="fs-1 fw-bolder">Filmera</h1>
+                </div>
+                <div class="col-4 d-flex justify-content-center">
+                    <input type="text" id="search-input" class="p-2 w-100">
+                </div>
         
-    </section>
-
-    <div class="d-flex justify-content-center">
-        <div id="line-separator"></div>
+                <div class="sign-in col-4 d-flex justify-content-center align-items-center">
+                    <button id="btn-sign-in">Cadastrar</button>
+                </div>
+            </div>
+        </header>
+        
+        <nav>
+            <ul class="d-flex gap-5 flex-row justify-content-center">
+                <a href="#home" class="text-decoration-none"><li>Home</li></a>
+                <a href="#highlights" class="text-decoration-none"><li>Destaques</li></a>
+                <a href="#movies" class="text-decoration-none"><li>Filmes</li></a>
+                <a href="#author" class="text-decoration-none"><li>Aluno</li></a>
+            </ul>
+        </nav>
+        <div class="d-flex justify-content-center">
+            <div id="line-separator"></div>
+        </div>
+        <section class=" mb-5">
+            <h2 class="fs-2 text-center mb-5 mt-5">Destaques</h2>
+            <div id="highlights" class="d-flex flex-column justify-content-center align-items-center"></div>
+        
+        </section>
+        <div class="d-flex justify-content-center">
+            <div id="line-separator"></div>
+        </div>
+        
+        <main class="w-100 d-flex flex-column align-items-center">
+            <h2 class="fs-2 text-center mb-5 mt-5">Filmes</h2>
+            <section id="movies" class="row w-75 overflow-x-hidden">
+            </section>
+            <section id="graph">
+            </section>
+        </main>
+        <footer class="container-fluid mt-5 mb-5 p-5" id="author">
+            <div class="row">
+                <h2 class="fs-1">Informações do Aluno</h2>
+            </div>
+            <div class="row">
+                <div class="col-4 mt-3">
+                    <h3>Autoria do Trabalho</h3>
+                    <img src="#" alt="">
+                    <div class="d-flex flex-column">
+                        <label class="mb-2">Aluno: Murilo Freitas de Souza</label>
+                        <label>Curso: Engenharia de Software</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <h3 class="mb-3">Sobre:</h3>
+                    <p class="w-50">Um catálogo de filmes e séries para aqueles que são apaixonados por obras cinematrográficas e estão curiosos em saber o que esperar antes de assistir</p>
+                </div>
+                <div class="col-4">
+                    <h3>Redes Sociais</h3>
+                    <div class="mt-3">
+                        <a href="https://www.instagram.com/murilofsouza_/" target="_blank"><img src="../../src/assets/images/instagram.svg" alt="instagram-png" style="width: 24px;"></a>
+                        <a href="https://www.linkedin.com/in/murilo-freitas-de-souza-67a01b2bb/" target="_blank"><img src="../../src/assets/images/linkedin.svg" alt="linkedin-png" style="width: 24px;"></a>
+                        <a href="https://github.com/murilofsouzaa" target="_blank"><img src="../../src/assets/images/github.svg" alt="github-png" style="width: 24px;"></a>
+                    </div>
+                </div>
+            </div>
     </div>
-    
-    <main class="w-100 d-flex flex-column align-items-center">
-        <h2 class="fs-2 text-center mb-5 mt-5">Filmes</h2>
-        <section id="movies" class="row w-75 overflow-x-hidden">
-
-        </section>
-
-        <section id="graph">
-
-        </section>
-    </main>
-
-    <footer class="container-fluid mt-5 mb-5 p-5" id="author">
-        <div class="row">
-            <h2 class="fs-1">Informações do Aluno</h2>
-        </div>
-
-        <div class="row">
-            <div class="col-4 mt-3">
-                <h3>Autoria do Trabalho</h3>
-                <img src="#" alt="">
-                <div class="d-flex flex-column">
-                    <label class="mb-2">Aluno: Murilo Freitas de Souza</label>
-                    <label>Curso: Engenharia de Software</label>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <h3 class="mb-3">Sobre:</h3>
-                <p class="w-50">Um catálogo de filmes e séries para aqueles que são apaixonados por obras cinematrográficas e estão curiosos em saber o que esperar antes de assistir</p>
-            </div>
-            
-            <div class="col-4">
-                <h3>Redes Sociais</h3>
-                <div class="mt-3">
-                    <a href="https://www.instagram.com/" target="_blank"><img src="../../src/assets/images/instagram.svg" alt="instagram-png" style="width: 24px;"></a>
-                    <a href="https://www.linkedin.com/in/murilo-freitas-de-souza-67a01b2bb/" target="_blank"><img src="../../src/assets/images/linkedin.svg" alt="linkedin-png" style="width: 24px;"></a>
-                    <a href="https://github.com/murilofsouzaa" target="_blank"><img src="../../src/assets/images/github.svg" alt="github-png" style="width: 24px;"></a>
-                </div>
-            </div>
-        </div>
     </footer>
+
+    <div id="login-popup" class="login-popup hidden">
+        <div class="row mb-4 d-flex justify-content-end">
+            <button id="close-popup"><img src="../../src/assets/images/x-circle-fill.svg" alt="close-btn"></button>
+        </div>
+
+        <div class="row">
+            <h2 class="text-center">Login</h2>
+        </div>
+
+
+        <div class="row d-flex justify-content-center align-items-center flex-column w-100">
+            <input type="text" placeholder="Email" class="w-75 mb-4"/>
+            <input type="password" placeholder="Senha"class="w-75" />
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <button id="submit-login" class="w-25 p-4 rounded-2">Entrar</button>
+        </div>
+    </div>
+
     <script src="../../src/js/services/moviesApi.js"></script>
+    <script src="../../src/js/login.js"></script>
 </body>
 </html>
 

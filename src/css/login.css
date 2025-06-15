@@ -1,0 +1,57 @@
+.body-active{
+    transition: 1s ease;
+    filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.034);
+}
+
+.hidden {
+  display: none;
+}
+
+.login-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 800px;
+  width: 600px;
+  padding: 20px;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 1001;
+}
+
+.login-popup div:nth-of-type(1){
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.login-popup div:nth-of-type(1) > button{
+    width: 54px;
+    border-radius: 10px;
+}
+
+.login-popup div:nth-of-type(1) > button img{
+    width: 20px;
+}
+
+.login-popup div:nth-of-type(2) h2{
+    font-size: 62px;
+    margin-bottom: 140px;
+}
+
+.login-popup div:nth-of-type(3){
+    margin-bottom: 140px;
+}
+
+.login-popup div:nth-of-type(3) input{
+    padding: 10px;
+}
+
+.login-popup div:nth-of-type(4){
+    
+}
+
+
