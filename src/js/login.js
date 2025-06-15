@@ -38,14 +38,20 @@ function login(event) {
 
   const existingUser = getUserInfo();
 
-  if (!existingUser || existingUser.email !== user.email) {
-    localStorage.setItem('user', JSON.stringify(user));
-  } else {
+  if(userEmailInput.value !== null && userEmailInput.value.trim() !== ""){
+    if (!existingUser || existingUser.email !== user.email) {
+      localStorage.setItem('user', JSON.stringify(user));
+    } else {
+      userEmailInput.classList.add('exist');
+      userEmailInput.value = "";
+      userPasswordInput.value = "";
+      userEmailInput.placeholder = `Esse email já está sendo utilizado`;
+    }
+  }else{
+    userEmailInput.placeholder = `Informe um endereço de email válido`;
     userEmailInput.classList.add('exist');
-    userEmailInput.value = "";
-    userPasswordInput.value = "";
-    userEmailInput.placeholder = `Esse email já está sendo utilizado`;
   }
+
 }
 
 close_btn.addEventListener('click', closePopup);
