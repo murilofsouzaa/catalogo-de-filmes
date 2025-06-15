@@ -32,3 +32,15 @@ h1, h2, h3, h5 {
     margin-top: 40px;
     background-color: var(--color);
 }
+
+button{
+    transition: 0.3s ease;
+}
+
+button:hover{
+    transform: scale(0.94);
+}
+
+button:active{
+    transform: scale(0.8);
+}

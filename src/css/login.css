@@ -50,8 +50,15 @@
     padding: 10px;
 }
 
-.login-popup div:nth-of-type(4){
-    
+.login-popup div:nth-of-type(4) button{
+    width: 150px;
+}
+
+.login-popup div:nth-of-type(5) p{
+    font-size: 12px;
+    position: absolute;
+    bottom: 15px;
+    left: 30%;
 }
 
 
