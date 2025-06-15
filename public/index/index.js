@@ -1,1 +1,0 @@
-const movies_Section = document.querySelector("#movies");
