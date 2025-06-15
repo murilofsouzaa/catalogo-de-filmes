@@ -1,4 +1,6 @@
-const url = 'https://api.themoviedb.org/3/movie/popular';
+const urlMovies = 'https://api.themoviedb.org/3/movie/popular';
+const urlMoviesGenre = 'https://api.themoviedb.org/3/genre/movie/list?language=pt-BR';
+
 const options = {
   method: 'GET',
   headers: {
@@ -7,38 +9,55 @@ const options = {
   }
 };
 
-async function fetchMovies(){
-    try{
-        const res = await fetch(url, options);
-        const data = await res.json();
-        return data.results;
-    }
-
-    catch(error){
-        console.error(error);
-        }
+async function fetchMovies() {
+  try {
+    const res = await fetch(urlMovies, options);
+    const data = await res.json();
+    return data.results;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-async function setupMovies(){
-
-    const movies = await fetchMovies();
-    const moviesContainer = document.querySelector("#movies");
-    
-    movies.forEach(movie => {
-        const div = document.createElement('div');
-
-        div.innerHTML = `
-            <div class="card col-md-4" style="width: 18rem;">
-            <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-            <div class="card-body">
-                <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text">${movie.overview}</p>
-                <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" class="btn btn-primary">Saiba Mais</a>
-            </div>
-            </div>
-        `
-        moviesContainer.appendChild(div);
-    });
+async function fetchMoviesGenre() {
+  try {
+    const res = await fetch(urlMoviesGenre, options);
+    const data = await res.json();
+    return data.genres;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-window.setupMovies = setupMovies;
+async function setupMovies() {
+  const movies = await fetchMovies();
+  const genres = await fetchMoviesGenre();
+
+  const genreMap = {};
+  genres.forEach(genre => {
+    genreMap[genre.id] = genre.name;
+  });
+
+  const moviesContainer = document.querySelector("#movies");
+
+  movies.forEach(movie => {
+    const genreNames = movie.genre_ids.map(id => genreMap[id]).join(', ');
+
+    const div = document.createElement('div');
+    div.classList.add('col-4', 'mb-4');
+
+   div.innerHTML = `
+    <div class="p-0 m-0 d-flex flex-column align-items-center text-white mb-5">
+        <a href="#" class="d-block" style="width: 400px;">
+        <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="card-img-top img-fluid" alt="${movie.title}" style="width: 100%;">
+        </a>
+        <p class="mt-2 mb-0" style="width: 400px; color:rgba(53, 53, 53, 0.84) ; text-align: left;">${genreNames}</p>
+        <a href=""></a>
+    </div>
+    `;
+
+    moviesContainer.appendChild(div);
+  });
+}
+
+addEventListener("load", setupMovies);

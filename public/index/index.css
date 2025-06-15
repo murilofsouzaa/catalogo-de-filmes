@@ -7,19 +7,11 @@ header{
     padding: 40px;
 }
 
-header div div nav ul > li{
-}
-
 #highlights{
     margin-top: var(--margin-top);
 }
 
 #movies{
-
-}
-
-
-#series{
 
 }
 
@@ -29,6 +21,14 @@ header div div nav ul > li{
 
 footer{
 
+}
+
+#movies img{
+    transition: 0.4s ease;
+}
+
+#movies img:hover{
+    filter: blur(1px);
 }
 
 #highlights h2{
