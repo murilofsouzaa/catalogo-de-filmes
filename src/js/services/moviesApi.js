@@ -65,7 +65,7 @@ async function setupMovies() {
         <a href="#" class="d-block" style="width: 400px;">
         <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="blur card-img-top img-fluid" alt="${movie.title}" style="width: 100%;">
         </a>
-        <p class="mt-2 mb-0" style="width: 400px; color:rgba(53, 53, 53, 0.84) ; text-align: left;">${genreNames}</p>
+        <p class="mt-2 mb-0" style="width: 400px; color:rgba(53, 53, 53, 0.84) ; text-align: left;">Gênero: ${genreNames}</p>
     </div>
     `;
 
