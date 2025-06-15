@@ -62,7 +62,7 @@ async function setupMovies() {
 
    div.innerHTML = `
     <div class=" p-0 m-0 d-flex flex-column align-items-center text-white mb-5">
-        <a href="#" class="d-block" style="width: 400px;">
+        <a href="../info/info.html?id=${movie.id}" class="d-block" style="width: 400px;">
         <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="blur card-img-top img-fluid" alt="${movie.title}" style="width: 100%;">
         </a>
         <p class="mt-2 mb-0" style="width: 400px; color:rgba(53, 53, 53, 0.84) ; text-align: left;">Gênero: ${genreNames}</p>

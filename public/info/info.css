@@ -1,0 +1,22 @@
+ .movie-detail-container {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .movie-detail {
+      display: flex;
+      gap: 40px;
+      max-width: 900px;
+      flex-wrap: wrap;
+    }
+
+    .movie-detail img {
+      max-width: 300px;
+      border-radius: 8px;
+    }
+
+    .movie-info {
+      max-width: 500px;
+    }

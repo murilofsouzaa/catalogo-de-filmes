@@ -61,4 +61,8 @@
     left: 30%;
 }
 
+.exist::placeholder{
+    color:rgba(255, 0, 0, 0.589)
+}
+
 
