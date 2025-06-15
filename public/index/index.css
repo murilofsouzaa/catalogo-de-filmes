@@ -11,8 +11,12 @@ header{
     margin-bottom: 200px;
 }
 
-#movies{
-    /*...*/
+#movies img{
+   transition: 0.4s ease;
+}
+
+img:hover{
+    transform: scale(0.95);
 }
 
 #graphs{
