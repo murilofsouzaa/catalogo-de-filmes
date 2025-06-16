@@ -1,14 +1,15 @@
-const api_key = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODUyYjgwZjk5NjUyYmU3MTg5M2VmZDVmZDg0Y2Q3MyIsIm5iZiI6MTc0OTk0NzYyMS4wNzUsInN1YiI6IjY4NGUxNGU1MWQ2YzRhNDc0ZWJiNGRjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eoPKcy35MKgHv6VjJqHd5ep5Lb_mez8whECYYG2zr8I';
+const authorization = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODUyYjgwZjk5NjUyYmU3MTg5M2VmZDVmZDg0Y2Q3MyIsIm5iZiI6MTc0OTk0NzYyMS4wNzUsInN1YiI6IjY4NGUxNGU1MWQ2YzRhNDc0ZWJiNGRjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eoPKcy35MKgHv6VjJqHd5ep5Lb_mez8whECYYG2zr8I';
+const endpoint = `https://api.themoviedb.org/3`
 
-const urlMovies = 'https://api.themoviedb.org/3/movie/popular?language=pt-BR';
-const urlMoviesGenre = 'https://api.themoviedb.org/3/genre/movie/list?language=pt-BR';
-const urlUpcomingMovies = 'https://api.themoviedb.org/3/movie/upcoming?language=pt-BR';
+const urlMovies = `${endpoint}/movie/popular?language=pt-BR`;
+const urlMoviesGenre = `${endpoint}/genre/movie/list?language=pt-BR`;
+const urlUpcomingMovies = `${endpoint}/movie/upcoming?language=pt-BR`;
 
 const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: api_key
+    Authorization: authorization
   }
 };
 

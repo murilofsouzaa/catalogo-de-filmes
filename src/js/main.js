@@ -1,4 +1,5 @@
 const api_key = '2852b80f99652be71893efd5fd84cd73';
+const endpoint = `https://api.themoviedb.org/3`
 
 const submitBtn = document.querySelector("#submit-search-btn");
 
@@ -8,7 +9,7 @@ function getMovieID_URL() {
 }
 
 async function fetchMovies() {
-    const api_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=pt-BR`;
+    const api_URL = `${endpoint}movie/popular?api_key=${api_key}&language=pt-BR`;
     const res = await fetch(api_URL);
     const data = await res.json();
     return data.results;
