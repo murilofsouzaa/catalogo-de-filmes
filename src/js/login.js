@@ -16,11 +16,11 @@ const userPasswordInput = document.querySelector("#userPassword");
 let overlay;
 
 function setupLoginPopUp() {
-  if (!document.querySelector(".overlay")) {
     overlay = document.createElement("div");
     overlay.classList.add("overlay");
     document.body.appendChild(overlay);
-  }
+    
+  
 
   loginPopUp.classList.remove("hidden");
   mainContainer.classList.add("body-active");
