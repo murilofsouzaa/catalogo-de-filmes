@@ -7,8 +7,81 @@ header{
     padding: 40px;
 }
 
+.search-container {
+    display: flex;
+    max-width: 100%;
+}
+
+.search-container input {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    min-width: 0; 
+}
+
+.search-container button {
+    background: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    padding: 8px 16px;
+    white-space: nowrap; 
+}
+
+.search-container button:hover {
+    background: #0056b3;
+}
+
+#btn-sign-in {
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#btn-sign-in:hover {
+    background: #1e7e34;
+}
+
 #highlights{
     margin-bottom: 200px;
+}
+
+#highlights img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+#movies .movie-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#movies .movie-card a {
+    display: block;
+    width: 100%;
+}
+
+#movies .movie-card img {
+    width: 100%;
+    height: auto;
+    transition: 0.4s ease;
+}
+
+#movies .movie-card img:hover {
+    transform: scale(0.95);
+}
+
+#movies .movie-card p {
+    width: 100%;
+    color: rgba(53, 53, 53, 0.84);
+    text-align: left;
+    margin-top: 8px;
+    margin-bottom: 0;
 }
 
 #movies img{
@@ -20,7 +93,6 @@ header{
 }
 
 #graphs{
-    /*...*/
 }
 
 header > div div:nth-of-type(3){
@@ -30,12 +102,10 @@ header > div div:nth-of-type(3){
 button{
     border: none;
     padding: 16px;
-    
 }
 
 footer > div:nth-of-type(2) div:nth-of-type(2) p{
     line-height: 28px;
-
 }
 
 footer > div:nth-of-type(1){
@@ -48,12 +118,166 @@ footer > div:nth-of-type(2) > div:nth-of-type(3) > div{
     gap: 20px;
 }
 
-#highlights img{
-    width: 20px;
-}
-
 #highlights h2{
     font-size: var(--h2-size);
 }
 
+.login-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
 
+.login-popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+}
+
+#close-popup {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+#close-popup img {
+    width: 24px;
+    height: 24px;
+}
+
+#submit-login {
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#submit-login:hover {
+    background: #0056b3;
+}
+
+.popup-content input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+@media (max-width: 992px) {
+    #highlights img {
+        max-width: 400px;
+    }
+    
+    #movies .movie-card {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+    }
+
+    #highlights {
+        margin-bottom: 100px;
+    }
+
+    #highlights img {
+        max-width: 300px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-container input,
+    .search-container button {
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    #movies .movie-card {
+        max-width: 300px;
+    }
+
+    footer > div:nth-of-type(1) {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    footer > div:nth-of-type(2) > div:nth-of-type(3) > div {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: 15px;
+    }
+
+    #highlights img {
+        max-width: 250px;
+    }
+
+    #movies .movie-card {
+        max-width: 280px;
+    }
+
+    .popup-content {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    nav ul {
+        gap: 15px !important;
+    }
+
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #highlights img {
+        max-width: 200px;
+    }
+
+    #movies .movie-card {
+        max-width: 250px;
+    }
+
+    .popup-content {
+        padding: 15px;
+        margin: 15px;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    #movies img:hover {
+        transform: none; 
+    }
+    
+    button:hover {
+    }
+}
