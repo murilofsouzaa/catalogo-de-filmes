@@ -14,6 +14,35 @@ const options = {
 
 const moviesContainer = document.querySelector("#movies");
 
+let favoriteMovieIds = new Set(JSON.parse(localStorage.getItem('favoriteMovies')) || []);
+
+function saveFavorites() {
+  localStorage.setItem('favoriteMovies', JSON.stringify([...favoriteMovieIds]));
+}
+
+function toggleFavorite(movieId) {
+  if (favoriteMovieIds.has(movieId)) {
+    favoriteMovieIds.delete(movieId);
+  } else {
+    favoriteMovieIds.add(movieId);
+  }
+  saveFavorites();
+  updateFavoriteButtons();
+}
+
+function updateFavoriteButtons() {
+  document.querySelectorAll('.favorite-btn').forEach(button => {
+    const movieId = +button.dataset.movieId;
+    if (favoriteMovieIds.has(movieId)) {
+      button.classList.add('favorited');
+      button.textContent = '❤️'; 
+    } else {
+      button.classList.remove('favorited');
+      button.textContent = '🤍'; 
+    }
+  });
+}
+
 async function fetchMovies() {
   try {
     const res = await fetch(urlMovies, options);
@@ -53,6 +82,8 @@ async function setupMovies() {
     genreMap[genre.id] = genre.name;
   });
 
+  moviesContainer.innerHTML = ''; 
+
   movies.forEach(movie => {
     const genreNames = movie.genre_ids.map(id => genreMap[id]).join(', ');
 
@@ -67,10 +98,20 @@ async function setupMovies() {
         <p class="mt-2 mb-0 w-100" style="color:rgba(53, 53, 53, 0.84); text-align: left;">
           Gênero: ${genreNames}
         </p>
+        <button class="favorite-btn" data-movie-id="${movie.id}" style="font-size: 1.5rem; background: none; border: none; cursor: pointer;">
+          ${favoriteMovieIds.has(movie.id) ? '❤️' : '🤍'}
+        </button>
       </div>
     `;
 
     moviesContainer.appendChild(div);
+  });
+
+  document.querySelectorAll('.favorite-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const movieId = +button.dataset.movieId;
+      toggleFavorite(movieId);
+    });
   });
 }
 
@@ -108,5 +149,12 @@ async function setupCarousel() {
   });
 }
 
-addEventListener("load", setupMovies);
-addEventListener("load", setupCarousel);
+function setupFavoriteUI() {
+  updateFavoriteButtons();
+}
+
+addEventListener("load", () => {
+  setupMovies();
+  setupCarousel();
+  setupFavoriteUI();
+});
