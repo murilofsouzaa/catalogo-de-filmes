@@ -47,8 +47,13 @@
     width: 20px;
 }
 
-.login-popup div:nth-of-type(2) h2{
-    font-size: 62px;
+.login-popup div:nth-of-type(2) h2:nth-of-type(1){
+    font-size: 82px;
+    margin-bottom: 60px;
+}
+
+.login-popup div:nth-of-type(2) h2:nth-of-type(2){
+    font-size: 42px;
     margin-bottom: 60px;
 }
 

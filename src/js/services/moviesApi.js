@@ -20,16 +20,6 @@ function saveFavorites() {
   localStorage.setItem('favoriteMovies', JSON.stringify([...favoriteMovieIds]));
 }
 
-function toggleFavorite(movieId) {
-  if (favoriteMovieIds.has(movieId)) {
-    favoriteMovieIds.delete(movieId);
-  } else {
-    favoriteMovieIds.add(movieId);
-  }
-  saveFavorites();
-  updateFavoriteButtons();
-}
-
 function updateFavoriteButtons() {
   document.querySelectorAll('.favorite-btn').forEach(button => {
     const movieId = +button.dataset.movieId;
@@ -42,6 +32,16 @@ function updateFavoriteButtons() {
     }
   });
 }
+function toggleFavorite(movieId) {
+  if (favoriteMovieIds.has(movieId)) {
+    favoriteMovieIds.delete(movieId);
+  } else {
+    favoriteMovieIds.add(movieId);
+  }
+  saveFavorites();
+  updateFavoriteButtons();
+}
+
 
 async function fetchMovies() {
   try {
@@ -142,7 +142,7 @@ async function setupCarousel() {
 
     div.innerHTML = `
       <a href="../info/info.html?id=${movie.id}">
-        <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="d-block w-100 img-fluid" alt="${movie.title}">
+        <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="d-block img-fluid" alt="${movie.title}">
       </a>
     `;
     carouselInner.appendChild(div);

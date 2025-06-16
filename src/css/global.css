@@ -33,14 +33,14 @@ h1, h2, h3, h5 {
     background-color: var(--color);
 }
 
-button{
+.button-hover-transition{
     transition: 0.3s ease;
 }
 
-button:hover{
-    transform: scale(0.94);
+.button-hover-transition:hover{
+    transform: scale(0.96);
 }
 
-button:active{
+.button-hover-transition:active{
     transform: scale(0.8);
 }
