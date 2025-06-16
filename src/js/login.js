@@ -1,59 +1,89 @@
+const dados = {
+  users: [
+    { id: 1, nome: "admin", senha: 123, email: "adm@gmail.com" }
+  ]
+};
+
 const btnSignIn = document.querySelector("#btn-sign-in");
-const mainContainer = document.querySelector('.main-container');
+const mainContainer = document.querySelector(".main-container");
 const close_btn = document.querySelector("#close-popup");
 const loginPopUp = document.querySelector("#login-popup");
-const body = document.querySelector('body');
 const submitLoginBtn = document.querySelector("#submit-login");
 
 const userEmailInput = document.querySelector("#userEmail");
 const userPasswordInput = document.querySelector("#userPassword");
 
-let overlay; 
+let overlay;
 
 function setupLoginPopUp() {
-  overlay = document.createElement('div');
-  overlay.classList.add('overlay');
-  loginPopUp.classList.remove('hidden');
-  mainContainer.classList.add('body-active');
-  document.body.appendChild(overlay);
+  if (!document.querySelector(".overlay")) {
+    overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
+  }
+
+  loginPopUp.classList.remove("hidden");
+  mainContainer.classList.add("body-active");
 }
 
-function closePopup(){
-    loginPopUp.classList.add('hidden');
-    mainContainer.classList.remove('body-active');
+function closePopup() {
+  loginPopUp.classList.add("hidden");
+  mainContainer.classList.remove("body-active");
+
+  const existingOverlay = document.querySelector(".overlay");
+  if (existingOverlay) {
+    document.body.removeChild(existingOverlay);
+  }
 }
 
 function getUserInfo() {
-  const userString = localStorage.getItem('user');
+  const userString = localStorage.getItem("user");
   return userString ? JSON.parse(userString) : null;
 }
 
 function login(event) {
   event.preventDefault();
 
-  const user = {
-    email: userEmailInput.value,
-    password: userPasswordInput.value
-  };
+  const email = userEmailInput.value;
+  const password = userPasswordInput.value;
 
-  const existingUser = getUserInfo();
+  const user = dados.users.find(
+    (u) => u.email === email && u.senha === Number(password)
+  );
 
-  if(userEmailInput.value !== null && userEmailInput.value.trim() !== ""){
-    if (!existingUser || existingUser.email !== user.email) {
-      localStorage.setItem('user', JSON.stringify(user));
-    } else {
-      userEmailInput.classList.add('exist');
-      userEmailInput.value = "";
-      userPasswordInput.value = "";
-      userEmailInput.placeholder = `Esse email já está sendo utilizado`;
-    }
-  }else{
-    userEmailInput.placeholder = `Informe um endereço de email válido`;
-    userEmailInput.classList.add('exist');
+  if (user) {
+    localStorage.setItem("user", JSON.stringify(user));
+    alert("Login bem-sucedido!");
+    location.reload();
+  } else {
+    alert("Email ou senha incorretos!");
+    userEmailInput.value = "";
+    userPasswordInput.value = "";
   }
-
 }
 
-close_btn.addEventListener('click', closePopup);
-btnSignIn.addEventListener("click", setupLoginPopUp);
-submitLoginBtn.addEventListener('click', login);
+function logoutUser() {
+  localStorage.removeItem("user");
+  location.href = `../index/index.html`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const user = getUserInfo();
+
+  if (user) {
+    btnSignIn.textContent = "Sair";
+    btnSignIn.removeEventListener("click", setupLoginPopUp);
+    btnSignIn.addEventListener("click", logoutUser);
+
+    submitLoginBtn.style.display = "none"; 
+  } else {
+    btnSignIn.textContent = "Entrar";
+    btnSignIn.removeEventListener("click", logoutUser);
+    btnSignIn.addEventListener("click", setupLoginPopUp);
+
+    submitLoginBtn.style.display = "inline-block";
+    submitLoginBtn.addEventListener("click", login);
+  }
+});
+
+close_btn.addEventListener("click", closePopup);
