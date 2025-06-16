@@ -56,4 +56,52 @@ footer > div:nth-of-type(2) > div:nth-of-type(3) > div{
     font-size: var(--h2-size);
 }
 
+@media (max-width: 768px) {
+  header .row {
+    flex-wrap: wrap;
+  }
+
+  header .col-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+    justify-content: center !important;
+  }
+
+  #search-input {
+    width: 70%;
+  }
+
+  #submit-search-btn {
+    width: 25%;
+    margin-left: 5px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  footer .row > div[class^="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  h2.fs-2 {
+    font-size: 22px;
+  }
+
+  #highlights {
+    width: 100%;
+  }
+
+  #movies {
+    width: 100%;
+  }
+}
+
 
