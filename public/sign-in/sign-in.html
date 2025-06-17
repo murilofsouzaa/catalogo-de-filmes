@@ -12,14 +12,11 @@
     <link rel="stylesheet" href="sign-in.css">
 </head>
 <body>
-    <aside>
-        
-    </aside>
-
+    
     <main>
         <div class="texts">
             <div class="row">
-                <a href="../index/index.html" class="text-decoration-none text-black">
+                <a href="../index/index.html" class="text-decoration-none text-black w-100">
                     <h2>Filmera</h2>
                 </a>
             </div>
@@ -27,25 +24,30 @@
                 <p class="fs-4">Crie sua conta e veja mais sobre os melhores filmes</p>
             </div>
         </div>
-
+        
         <div id="inputs">
-            <form action="sign-in.html">
-                <input type="text" placeholder="Nome de Usuário">
-                <input type="password" placeholder="Senha" id="userPassword"/>
-                <input type="password" placeholder="Confirmar Senha" id="userPasswordCheck"/>
-                <input type="text" placeholder="Email" id="userEmail"/>
-            </form>
+            <input type="text" placeholder="Nome de Usuário" id="userName">
+            <input type="password" placeholder="Senha" id="userPassword"/>
+            <input type="password" placeholder="Confirmar Senha" id="userPasswordCheck"/>
+            <input type="text" placeholder="Email" id="userEmail"/>
         </div>
         
         <div id="register-btn-div">
             <div>
-              <button id="submit-login" class="p-4 rounded-2">Criar Conta</button>
+                <button id="create-account-btn" class="p-4 rounded-2 btn btn-success">Criar Conta</button>
             </div>
             <div>
                 <p>Já possui uma conta? <a href="/public/index/index.html">Entrar</a></p>
             </div>
         </div>
     </main>
-
+    
+    <aside>
+        <div>
+            <h2>Saiba <strong>tudo</strong> sobre os filmes e as séries que <strong>você ama</strong>! :)</h2>
+        </div>
+    </aside>
 </body>
 </html>
+
+<script src="../../src/js/sign_in.js"></script>

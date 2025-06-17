@@ -45,7 +45,7 @@ async function setupMovieDetail() {
 
   const container = document.getElementById("movie-detail");
 
-  let imageGallery = images.slice(0, 5).map(img =>
+  let imageGallery = images.slice(6, 12).map(img =>
     `<img src="https://image.tmdb.org/t/p/w500${img.file_path}" class="me-2 mb-2" style="width: 200px;">`
   ).join("");
 
@@ -82,5 +82,4 @@ async function setupMovieDetail() {
       </div>
   `;
 }
-
 document.addEventListener('DOMContentLoaded', setupMovieDetail);
