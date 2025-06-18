@@ -1,9 +1,3 @@
-const dados = {
-  users: [
-    { id: 1, nome: "admin", senha: 123, email: "adm@gmail.com" }
-  ]
-};
-
 const btnSignIn = document.querySelector("#btn-sign-in");
 const mainContainer = document.querySelector(".main-container");
 const close_btn = document.querySelector("#close-popup");
@@ -20,8 +14,6 @@ function setupLoginPopUp() {
     overlay.classList.add("overlay");
     document.body.appendChild(overlay);
     
-  
-
   loginPopUp.classList.remove("hidden");
   mainContainer.classList.add("body-active");
 }
@@ -37,53 +29,58 @@ function closePopup() {
 }
 
 function getUserInfo() {
-  const userString = localStorage.getItem("user");
-  return userString ? JSON.parse(userString) : null;
+  const users = JSON.parse(localStorage.getItem('users'));
+  return users;
 }
 
-function login(event) {
-  event.preventDefault();
-
-  const email = userEmailInput.value;
-  const password = userPasswordInput.value;
-
-  const user = dados.users.find(
-    (u) => u.email === email && u.senha === Number(password)
-  );
-
-  if (user) {
-    localStorage.setItem("user", JSON.stringify(user));
-    alert("Login bem-sucedido!");
-    location.reload();
-  } else {
-    alert("Email ou senha incorretos!");
-    userEmailInput.value = "";
-    userPasswordInput.value = "";
-  }
-}
-
-function logoutUser() {
-  localStorage.removeItem("user");
+function loggoutUser(){
+  localStorage.removeItem('user');
+  alert("Usuário deslogado com sucesso!");
   location.href = `../index/index.html`;
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
-  const user = getUserInfo();
-
-  if (user) {
+  
+  const users = getUserInfo();
+  const userLogged = localStorage.getItem('user');
+  
+  function setBtnToLogout() {
     btnSignIn.textContent = "Sair";
-    btnSignIn.removeEventListener("click", setupLoginPopUp);
-    btnSignIn.addEventListener("click", logoutUser);
-
-    submitLoginBtn.style.display = "none"; 
-  } else {
-    btnSignIn.textContent = "Entrar";
-    btnSignIn.removeEventListener("click", logoutUser);
-    btnSignIn.addEventListener("click", setupLoginPopUp);
-
-    submitLoginBtn.style.display = "inline-block";
-    submitLoginBtn.addEventListener("click", login);
+    btnSignIn.onclick = loggoutUser; 
   }
-});
+  
+  function setBtnToLogin() {
+    btnSignIn.textContent = "Entrar";
+    btnSignIn.onclick = setupLoginPopUp;
+  }
 
-close_btn.addEventListener("click", closePopup);
+  if(userLogged){
+    setBtnToLogout();
+  }else{
+    setBtnToLogin();
+  }
+  
+  submitLoginBtn.addEventListener("click", ()=> {
+    const email = userEmailInput.value;
+    const password = userPasswordInput.value;
+    const user = users.find(user => user.email === email);
+    
+    
+    if(!user || user.password != password || user.email != email){
+      alert("Email ou senha incorreto!");
+      userEmailInput.value = "";
+      userPasswordInput.value = "";
+      return;
+    }
+    
+    localStorage.setItem('user', JSON.stringify(user));
+    btnSignIn.textContent = `Sair`;
+    alert("Login feito com sucesso!");
+    closePopup();
+    setBtnToLogout();
+    
+  })
+  
+  close_btn.addEventListener("click", closePopup);
+})

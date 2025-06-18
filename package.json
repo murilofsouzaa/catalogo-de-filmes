@@ -8,5 +8,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Um catálogo de filmes e séries feito com HTML, CSS e JavaScript para a disciplina: Desenvolvimento de Interfaces Web",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  },
+  "devDependencies": {}
 }
