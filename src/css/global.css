@@ -44,3 +44,23 @@ h1, h2, h3, h5 {
 .button-hover-transition:active{
     transform: scale(0.8);
 }
+
+.sign-in a img{
+    width: 45px;
+    border-radius: 50%;
+    filter: contrast(0%);
+    transition: ease 0.3s;
+}
+
+.sign-in a img:hover{
+    transform: scale(0.95);
+}
+
+.sign-in a img:active{
+    transform: scale(0.80);
+}
+
+
+.sign-in{
+    gap: 30px;
+}

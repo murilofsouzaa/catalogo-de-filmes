@@ -10,6 +10,9 @@ function createUser() {
   const password = userPasswordInput.value;
   const passwordCheck = userPasswordInputCheck.value;
   const email = userEmailInput.value.trim();
+  const userImage = imagePreview.src;
+  
+  
 
   if (password !== passwordCheck) {
     alert("As senhas não são iguais!");
@@ -25,7 +28,7 @@ function createUser() {
     users = [];
   }
 
-  const user = { username, email, password };
+  const user = { username, email, password, userImage };
   users.push(user);
   localStorage.setItem("users", JSON.stringify(users));
 

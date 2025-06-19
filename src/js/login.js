@@ -7,13 +7,15 @@ const submitLoginBtn = document.querySelector("#submit-login");
 const userEmailInput = document.querySelector("#userEmail");
 const userPasswordInput = document.querySelector("#userPassword");
 
+const userImageBtn = document.querySelector("#userImg");
+
 let overlay;
 
 function setupLoginPopUp() {
-    overlay = document.createElement("div");
-    overlay.classList.add("overlay");
-    document.body.appendChild(overlay);
-    
+  overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.body.appendChild(overlay);
+
   loginPopUp.classList.remove("hidden");
   mainContainer.classList.add("body-active");
 }
@@ -30,57 +32,63 @@ function closePopup() {
 
 function getUserInfo() {
   const users = JSON.parse(localStorage.getItem('users'));
-  return users;
+  return users || [];
 }
 
-function loggoutUser(){
+function logoutUser() {
   localStorage.removeItem('user');
   alert("Usuário deslogado com sucesso!");
-  location.href = `../index/index.html`;
+  location.href = "../index/index.html";
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-  
   const users = getUserInfo();
   const userLogged = localStorage.getItem('user');
-  
+
   function setBtnToLogout() {
     btnSignIn.textContent = "Sair";
-    btnSignIn.onclick = loggoutUser; 
+    btnSignIn.onclick = logoutUser;
   }
-  
+
   function setBtnToLogin() {
     btnSignIn.textContent = "Entrar";
     btnSignIn.onclick = setupLoginPopUp;
   }
 
-  if(userLogged){
+  if (userLogged) {
     setBtnToLogout();
-  }else{
+  } else {
     setBtnToLogin();
   }
-  
-  submitLoginBtn.addEventListener("click", ()=> {
+
+  userImageBtn.addEventListener("click", () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      window.location.href = "../../public/myAccount/myAccount.html";
+    } else {
+      window.location.href = "../../public/sign-in/sign-in.html";
+    }
+  });
+
+  submitLoginBtn.addEventListener("click", () => {
     const email = userEmailInput.value;
     const password = userPasswordInput.value;
+
     const user = users.find(user => user.email === email);
-    
-    
-    if(!user || user.password != password || user.email != email){
+
+    if (!user || user.password !== password) {
       alert("Email ou senha incorreto!");
       userEmailInput.value = "";
       userPasswordInput.value = "";
       return;
     }
-    
+
     localStorage.setItem('user', JSON.stringify(user));
-    btnSignIn.textContent = `Sair`;
+    btnSignIn.textContent = "Sair";
     alert("Login feito com sucesso!");
     closePopup();
     setBtnToLogout();
-    
-  })
-  
+  });
+
   close_btn.addEventListener("click", closePopup);
-})
+});

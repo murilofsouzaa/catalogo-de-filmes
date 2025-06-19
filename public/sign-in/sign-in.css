@@ -1,3 +1,7 @@
+.hidden{
+  display: none;
+}
+
 body{
   display: flex;
   height: 100vh;
@@ -82,4 +86,8 @@ aside h2{
   width: 70%;
   font-size: 80px;
   filter: drop-shadow( 7px 5px 2px rgba(0, 0, 0, 0.199));
+}
+
+#user-image-submit-container input[type="file"]{
+
 }
