@@ -55,8 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
     btnSignIn.onclick = setupLoginPopUp;
   }
 
+  function userPhotoUpdate(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    userImageBtn.src = user.userImageFile;
+  }
+
   if (userLogged) {
     setBtnToLogout();
+    userPhotoUpdate();
   } else {
     setBtnToLogin();
   }
@@ -84,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     localStorage.setItem('user', JSON.stringify(user));
+    userImageBtn.src = user.userImageFile;
     btnSignIn.textContent = "Sair";
     alert("Login feito com sucesso!");
     closePopup();

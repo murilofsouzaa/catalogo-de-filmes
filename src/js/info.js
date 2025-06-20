@@ -30,45 +30,6 @@ async function fetchMovieImages(movieID) {
   return data.backdrops;
 }
 
-let favoriteMovieIds = new Set(JSON.parse(localStorage.getItem('favoriteMovies')) || []);
-
-function saveFavorites() {
-  localStorage.setItem('favoriteMovies', JSON.stringify([...favoriteMovieIds]));
-}
-
-function updateFavoriteButtons() {
-  document.querySelectorAll('.favorite-btn').forEach(button => {
-    const movieId = +button.dataset.movieId;
-    if (favoriteMovieIds.has(movieId)) {
-      button.classList.add('favorited');
-      button.textContent = '❤️'; 
-    } else {
-      button.classList.remove('favorited');
-      button.textContent = '🤍'; 
-    }
-  });
-}
-
-function toggleFavorite(movieId) {
-  if (favoriteMovieIds.has(movieId)) {
-    favoriteMovieIds.delete(movieId);
-  } else {
-    favoriteMovieIds.add(movieId);
-  }
-  saveFavorites();
-  updateFavoriteButtons();
-}
-
-function setupFavoriteUI() {
-  updateFavoriteButtons();
-  document.querySelectorAll('.favorite-btn').forEach(button => {
-  button.addEventListener('click', () => {
-    const movieId = +button.dataset.movieId;
-    toggleFavorite(movieId);
-    });
-  });
-}
-
 async function setupMovieDetail() {
   const movieID = getMovieID_URL();
 
@@ -108,9 +69,6 @@ async function setupMovieDetail() {
             <p class="mt-3"><span class="fw-bold">Data de Lançamento:</span> ${movie.release_date}</p>
             <p class="mt-3"><span class="fw-bold">Descrição:</span> ${movie.overview}</p>
             <div>
-            <button class="favorite-btn" data-movie-id="${movie.id}" style="font-size: 1.5rem; background: none; border: none; cursor: pointer;">
-              ${favoriteMovieIds.has(movie.id) ? '❤️' : '🤍'}
-            </button>
               <h2 class="mt-5 mb-3">Fotos do Filme</h2>
               <div class="d-flex flex-wrap gap-2" style="width: 600px">${imageGallery}</div>
             </div>
