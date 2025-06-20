@@ -30,6 +30,11 @@ async function fetchMovieImages(movieID) {
   return data.backdrops;
 }
 
+function favoriteMovie(){
+  fetchMovieById();
+
+}
+
 async function setupMovieDetail() {
   const movieID = getMovieID_URL();
 
@@ -68,6 +73,14 @@ async function setupMovieDetail() {
             <p><span class="fw-bold">Nota:</span> ${movie.vote_average}</p>
             <p class="mt-3"><span class="fw-bold">Data de Lançamento:</span> ${movie.release_date}</p>
             <p class="mt-3"><span class="fw-bold">Descrição:</span> ${movie.overview}</p>
+            <div id="favoriteBtn">
+              <button></button>
+            </div>
+            <div>
+              <button>
+              
+              </button>
+            </div>
             <div>
               <h2 class="mt-5 mb-3">Fotos do Filme</h2>
               <div class="d-flex flex-wrap gap-2" style="width: 600px">${imageGallery}</div>
@@ -85,6 +98,5 @@ async function setupMovieDetail() {
 
 document.addEventListener('DOMContentLoaded', async ()=>{
   await setupMovieDetail()
-  setupFavoriteUI();
 });
 
