@@ -12,7 +12,7 @@ const userImageBtn = document.querySelector("#userImg");
 let overlay;
 
 function setupLoginPopUp() {
-  overlay = document.createElement("div");
+  overlay = document.createElement("div");  
   overlay.classList.add("overlay");
   document.body.appendChild(overlay);
 

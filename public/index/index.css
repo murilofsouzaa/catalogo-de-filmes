@@ -19,10 +19,6 @@ header{
     transform: scale(0.95);
 }
 
-#graphs{
-    /*...*/
-}
-
 header > div div:nth-of-type(3){
     gap: 20px;
 }
