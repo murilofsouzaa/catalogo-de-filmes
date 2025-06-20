@@ -113,5 +113,4 @@ async function setupCarousel() {
 addEventListener("load", () => {
   setupMovies();
   setupCarousel();
-  setupFavoriteUI();
 });
