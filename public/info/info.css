@@ -25,3 +25,16 @@ main{
     margin-top: 20px;
 }
 
+#save-flag-btn, #favorite-btn{
+    transition: 0.2s ease;
+}
+
+#save-flag-btn:hover, #favorite-btn:hover{
+    transform: scale(0.95);
+}
+
+#save-flag-btn:active, #favorite-btn:active{
+    transform: scale(0.85);
+}
+
+

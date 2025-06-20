@@ -1,7 +1,7 @@
 const api_key = '2852b80f99652be71893efd5fd84cd73';
 const endpoint = `https://api.themoviedb.org/3/`;
 
-function getMovieID_URL() {
+function getMovie_ID() {
   const params = new URLSearchParams(location.search);
   return params.get('id');
 }
@@ -30,13 +30,63 @@ async function fetchMovieImages(movieID) {
   return data.backdrops;
 }
 
-function favoriteMovie(){
-  fetchMovieById();
+let favoriteIds = new Set(JSON.parse(localStorage.getItem('favorites')) || []);
 
+function saveFavorites() {
+  localStorage.setItem("favorites", JSON.stringify([...favoriteIds]));
+}
+
+function updateFavoriteBtn() {
+  const favoriteBtn = document.querySelector("#favorite-btn");
+  const id = getMovie_ID();
+
+  if (favoriteIds.has(id)) {
+    favoriteBtn.textContent = '❤️';
+  } else {
+    favoriteBtn.textContent = '🤍';
+  }
+}
+
+function toggleFavorite(id) {
+  if (favoriteIds.has(id)) {
+    favoriteIds.delete(id);
+  } else {
+    favoriteIds.add(id);
+  }
+  saveFavorites();
+  updateFavoriteBtn();
+}
+
+let savedMovies = new Set(JSON.parse(localStorage.getItem('savedMovies')) || []);
+
+function saveMovie(){
+  localStorage.setItem('savedMovies', JSON.stringify([...savedMovies]));
+}
+
+function updateSaveBtn(){
+  const movieID = getMovie_ID();
+  const saveBtn = document.querySelector('#save-flag-btn');
+
+  if (savedMovies.has(movieID)) {
+    saveBtn.src = `../../src/assets/images/black-flag-save-icon.png`;
+  }else{
+    saveBtn.src = `../../src/assets/images/white-flag-save-icon.png`;
+  }
+}
+
+function toggleSave(id){
+  if(savedMovies.has(id)){
+    savedMovies.delete(id);
+  } else {
+    savedMovies.add(id);
+  }
+
+  saveMovie();
+  updateSaveBtn();
 }
 
 async function setupMovieDetail() {
-  const movieID = getMovieID_URL();
+  const movieID = getMovie_ID();
 
   if (!movieID) {
     document.getElementById("movie-detail").innerHTML = "<p>ID do filme não informado.</p>";
@@ -73,13 +123,15 @@ async function setupMovieDetail() {
             <p><span class="fw-bold">Nota:</span> ${movie.vote_average}</p>
             <p class="mt-3"><span class="fw-bold">Data de Lançamento:</span> ${movie.release_date}</p>
             <p class="mt-3"><span class="fw-bold">Descrição:</span> ${movie.overview}</p>
-            <div id="favoriteBtn">
-              <button></button>
-            </div>
-            <div>
-              <button>
-              
-              </button>
+            <div class="favorite-save-btn d-flex">
+              <div id="favoriteBtn">
+                <button id="favorite-btn" style="background: transparent; border: none; width: 60px; font-size: 1.5em;">🤍</button>
+              </div>
+              <div>
+                <button style="background: transparent; border: none;">
+                  <img id="save-flag-btn" src ="../../src/assets/images/white-flag-save-icon.png" alt="save-icon-unmarked" style="display: block; width: 34px;">
+                </button>
+              </div>
             </div>
             <div>
               <h2 class="mt-5 mb-3">Fotos do Filme</h2>
@@ -96,7 +148,27 @@ async function setupMovieDetail() {
   `;
 }
 
-document.addEventListener('DOMContentLoaded', async ()=>{
-  await setupMovieDetail()
-});
+document.addEventListener('DOMContentLoaded', async () => {
+  await setupMovieDetail();
 
+  const favoriteBtn = document.getElementById('favorite-btn');
+  const saveBtn = document.querySelector('#save-flag-btn');
+
+  if (favoriteBtn) {
+    favoriteBtn.addEventListener('click', () => {
+      const id = getMovie_ID();
+      toggleFavorite(id);
+    });
+  }
+
+  if (saveBtn) {
+
+    saveBtn.addEventListener('click', () => {
+      const id = getMovie_ID();
+      toggleSave(id);
+    });
+  }
+
+  updateFavoriteBtn();
+  updateSaveBtn();
+});

@@ -1,7 +1,6 @@
 async function fetchFavoritesMovies(){
 
 }
-
 async function fetchMoviesSaved() {
     
 }
