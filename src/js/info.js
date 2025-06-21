@@ -7,27 +7,39 @@ function getMovie_ID() {
 }
 
 async function fetchMovieById(movieID) {
-  const movieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`;
-  const res = await fetch(movieURL);
-  return await res.json();
+  try{
+    const movieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`;
+    const res = await fetch(movieURL);
+    return await res.json();
+  }catch (error) {
+    console.error(error);
+  }
 }
 
 async function fetchTrailer(movieID) {
-  const trailerURL = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`;
-  const res = await fetch(trailerURL);
-  const data = await res.json();
-  return data.results;
+  try{
+    const trailerURL = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`;
+    const res = await fetch(trailerURL);
+    const data = await res.json();
+    return data.results;
+  }catch (error) {
+    console.error(error);
+  }
 }
 
 async function fetchMovieImages(movieID) {
-  const res = await fetch(`https://api.themoviedb.org/3/movie/${movieID}/images`, {
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODUyYjgwZjk5NjUyYmU3MTg5M2VmZDVmZDg0Y2Q3MyIsIm5iZiI6MTc0OTk0NzYyMS4wNzUsInN1YiI6IjY4NGUxNGU1MWQ2YzRhNDc0ZWJiNGRjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eoPKcy35MKgHv6VjJqHd5ep5Lb_mez8whECYYG2zr8I'
-    }
-  });
-  const data = await res.json();
-  return data.backdrops;
+  try{
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${movieID}/images`, {
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyODUyYjgwZjk5NjUyYmU3MTg5M2VmZDVmZDg0Y2Q3MyIsIm5iZiI6MTc0OTk0NzYyMS4wNzUsInN1YiI6IjY4NGUxNGU1MWQ2YzRhNDc0ZWJiNGRjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eoPKcy35MKgHv6VjJqHd5ep5Lb_mez8whECYYG2zr8I'
+      }
+    });
+    const data = await res.json();
+    return data.backdrops;
+  }catch (error) {
+    console.error(error);
+  }
 }
 
 let favoriteIds = new Set(JSON.parse(localStorage.getItem('favorites')) || []);

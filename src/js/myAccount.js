@@ -11,15 +11,24 @@ function usernameTitle(){
 }
 
 async function fetchFavoritedMovies(favoritedID) {
+  try{
     const res = await fetch(`https://api.themoviedb.org/3/movie/${favoritedID}?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`);
     const data = await res.json();
     return data;
+
+  }catch (error) {
+    console.error(error);
+  }
 }
 
 async function fetchSavedMoviesID(savedID) {
+  try{
     const res = await fetch(`https://api.themoviedb.org/3/movie/${savedID}?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`);
     const data = await res.json();
     return data;
+  }catch (error) {
+    console.error(error);
+  } 
 }
 
 function getFavoritesMoviesID(){
