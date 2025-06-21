@@ -1,5 +1,5 @@
-const api_key = '2852b80f99652be71893efd5fd84cd73';
-const endpoint = `https://api.themoviedb.org/3/`;
+const api_key = '';
+const endpoint = ``;
 
 function getMovie_ID() {
   const params = new URLSearchParams(location.search);
@@ -7,13 +7,13 @@ function getMovie_ID() {
 }
 
 async function fetchMovieById(movieID) {
-  const movieURL = `${endpoint}movie/${movieID}?api_key=${api_key}&language=pt-BR`;
+  const movieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`;
   const res = await fetch(movieURL);
   return await res.json();
 }
 
 async function fetchTrailer(movieID) {
-  const trailerURL = `${endpoint}movie/${movieID}/videos?api_key=${api_key}&language=pt-BR`;
+  const trailerURL = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`;
   const res = await fetch(trailerURL);
   const data = await res.json();
   return data.results;

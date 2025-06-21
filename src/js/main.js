@@ -1,10 +1,9 @@
-const api_key = '2852b80f99652be71893efd5fd84cd73';
 const searchInput = document.querySelector("#search-input");
 const searchBtn = document.querySelector("#submit-search-btn");
 
 async function fetchMovieByTitle(title) {
   const query = encodeURIComponent(title.trim());
-  const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=pt-BR&query=${query}`);
+  const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR&query=${query}`);
   const data = await res.json();
   return data.results[0];
 }
@@ -27,16 +26,5 @@ searchInput.addEventListener('keydown', (event)=>{
   if(event.key === "Enter"){
     event.preventDefault();
     searchMovie();
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const userImg = document.querySelector('#userImg');
-  const user = JSON.parse(localStorage.getItem('user'));
-  const btnSignIn = document.querySelector("#btn-sign-in");
-
-  if (user && user.userImageFile) {
-    userImg.src = user.userImageFile;
-    btnSignIn.textContent = `Sair`;
   }
 });

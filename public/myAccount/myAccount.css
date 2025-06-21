@@ -3,6 +3,19 @@
     color: black;
 }
 
-h1, h2{
-    text-align: center;
+
+#favorites-movies-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 120px;
+}
+
+#favorited-movies{
+    display: flex;
+    gap: 30px;
+}
+
+#favorited-movies img {
+    width: 220px;
 }
