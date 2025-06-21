@@ -10,8 +10,14 @@ function usernameTitle(){
     document.title = `${userLogged.username}`;
 }
 
-async function fetchMoviesID(favoritedID) {
+async function fetchFavoritedMovies(favoritedID) {
     const res = await fetch(`https://api.themoviedb.org/3/movie/${favoritedID}?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`);
+    const data = await res.json();
+    return data;
+}
+
+async function fetchSavedMoviesID(savedID) {
+    const res = await fetch(`https://api.themoviedb.org/3/movie/${savedID}?api_key=2852b80f99652be71893efd5fd84cd73&language=pt-BR`);
     const data = await res.json();
     return data;
 }
@@ -26,12 +32,14 @@ function getMoviesSavedID() {
     return savedMovies;
 }
 
+
+
 async function setupFavoritedMovies(){
-    const savedListID = getMoviesSavedID();
+    const savedListID = getFavoritesMoviesID();
     const favoriteContainer = document.querySelector("#favorited-movies");
     
     for (const movieID of savedListID){
-      const movie = await fetchMoviesID(movieID);
+      const movie = await fetchFavoritedMovies(movieID);
       const favoriteMovieCard = document.createElement('div');
       
       favoriteMovieCard.innerHTML = `
@@ -46,7 +54,25 @@ async function setupFavoritedMovies(){
       }
 }
 
+async function setupSavedMovies(){
+    const savedListID = getMoviesSavedID();
+    const favoriteContainer = document.querySelector("#saved-movies");
+    
+    for (const movieID of savedListID){
+      const movie = await fetchFavoritedMovies(movieID);
+      const favoriteMovieCard = document.createElement('div');
+      
+      favoriteMovieCard.innerHTML = `
+      <div class="p-0 m-0 d-flex align-items-center text-white mb-5 w-100">
+        <a href="../info/info.html?id=${movie.id}" class="d-block">
+          <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="card-img-top img-fluid blur" />
+        </a>
+      </div>
+      `;
 
+      favoriteContainer.appendChild(favoriteMovieCard);
+      }
+}
 
 document.addEventListener('DOMContentLoaded', ()=>{
     usernameTitle();

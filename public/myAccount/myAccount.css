@@ -1,14 +1,32 @@
-.titles a{
-    text-decoration: none;
-    color: black;
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 
 #favorites-movies-container{
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin-left: 120px;
+    background-color: rgba(255, 255, 255, 0.932);
+    padding: 80px;
+    width: 85%;
+    border-radius: 10px;
+    transition: 1s ease;
+    overflow-x: scroll;
+}
+
+#favorites-movies-container:hover{
+    background-color: rgba(0, 0, 0, 0.932);
+}
+
+.favorited-title{
+    color: rgb(0, 0, 0);
+    transition: 1s ease;
+}
+
+#favorites-movies-container:hover .favorited-title{
+    color: rgb(255, 255, 255);
 }
 
 #favorited-movies{
@@ -18,4 +36,52 @@
 
 #favorited-movies img {
     width: 220px;
+    transition: 0.3s ease;
+    border-radius: 6px;
+}
+
+#favorited-movies img:hover {
+    transform: scale(1.05);
+}
+
+
+#saved-movies-container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: rgba(255, 255, 255, 0.932);
+    padding: 80px;
+    width: 85%;
+    border-radius: 10px;
+    transition: 1s ease;
+    margin-top: 90px;
+    overflow-x: scroll;
+}
+
+#saved-movies-container:hover{
+    background-color: rgba(0, 0, 0, 0.932);
+}
+
+.saved-title{
+    color: rgb(0, 0, 0);
+    transition: 1s ease;
+}
+
+#saved-movies-container:hover .saved-title{
+    color: rgb(255, 255, 255);
+}
+
+#saved-movies{
+    display: flex;
+    gap: 30px;
+}
+
+#saved-movies img {
+    width: 220px;
+    transition: 0.3s ease;
+    border-radius: 6px;
+}
+
+#saved-movies img:hover {
+    transform: scale(1.05);
 }
