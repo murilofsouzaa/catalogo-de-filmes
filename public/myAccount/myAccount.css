@@ -8,16 +8,16 @@ main{
     display: flex;
     flex-direction: column;
     align-items: start;
-    background-color: rgba(255, 255, 255, 0.932);
+    background-color: rgba(245, 245, 245, 0.932);
     padding: 80px;
     width: 85%;
     border-radius: 10px;
     transition: 1s ease;
-    overflow-x: scroll;
 }
 
 #favorites-movies-container:hover{
-    background-color: rgba(0, 0, 0, 0.932);
+    box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.199);
+    transform: scale(1.01);
 }
 
 .favorited-title{
@@ -25,9 +25,6 @@ main{
     transition: 1s ease;
 }
 
-#favorites-movies-container:hover .favorited-title{
-    color: rgb(255, 255, 255);
-}
 
 #favorited-movies{
     display: flex;
@@ -55,33 +52,33 @@ main{
     border-radius: 10px;
     transition: 1s ease;
     margin-top: 90px;
-    overflow-x: scroll;
+    
 }
-
-#saved-movies-container:hover{
-    background-color: rgba(0, 0, 0, 0.932);
-}
-
 .saved-title{
     color: rgb(0, 0, 0);
     transition: 1s ease;
 }
-
-#saved-movies-container:hover .saved-title{
-    color: rgb(255, 255, 255);
+#saved-movies-container:hover{
+    box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.199);
+    transform: scale(1.01);
 }
-
 #saved-movies{
     display: flex;
     gap: 30px;
-}
+    flex-wrap: wrap;
 
+}
 #saved-movies img {
     width: 220px;
     transition: 0.3s ease;
     border-radius: 6px;
 }
-
 #saved-movies img:hover {
     transform: scale(1.05);
 }
+
+#saved-movies-container .save-flag-icon{
+    width: 50px;
+    height: 50px;
+}
+

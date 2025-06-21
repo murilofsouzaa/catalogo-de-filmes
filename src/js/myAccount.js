@@ -56,8 +56,8 @@ async function setupFavoritedMovies(){
 
 async function setupSavedMovies(){
     const savedListID = getMoviesSavedID();
-    const favoriteContainer = document.querySelector("#saved-movies");
-    
+    const savedMovieContainer = document.querySelector("#saved-movies");
+
     for (const movieID of savedListID){
       const movie = await fetchFavoritedMovies(movieID);
       const favoriteMovieCard = document.createElement('div');
@@ -70,7 +70,7 @@ async function setupSavedMovies(){
       </div>
       `;
 
-      favoriteContainer.appendChild(favoriteMovieCard);
+      savedMovieContainer.appendChild(favoriteMovieCard);
       }
 }
 
