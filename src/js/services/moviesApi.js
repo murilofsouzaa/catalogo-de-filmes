@@ -60,7 +60,7 @@ async function setupMovies() {
     div.classList.add('col-sm-6', 'col-md-4', 'mb-4');
 
     div.innerHTML = `
-      <div class="p-0 m-0 d-flex flex-column align-items-center text-white mb-5 w-100">
+      <div class="p-0 m-0 d-flex flex-column align-items-center text-white mb-5 w-100 position-relative">
         <a href="../info/info.html?id=${movie.id}" class="d-block w-100">
           <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="card-img-top img-fluid blur" />
         </a>
@@ -69,6 +69,38 @@ async function setupMovies() {
         </p>
       </div>
     `;
+
+    // Cria botão de salvar
+    const saveBtn = document.createElement('button');
+    saveBtn.textContent = 'Salvar';
+    saveBtn.className = 'btn btn-outline-secondary btn-sm mt-2';
+    saveBtn.style.position = 'absolute';
+    saveBtn.style.top = '8px';
+    saveBtn.style.left = '8px';
+
+    // Estado inicial do botão
+    let savedMovies = JSON.parse(localStorage.getItem('savedMovies') || '[]');
+    if (savedMovies.includes(movie.id)) {
+      saveBtn.style.background = '#ffe066';
+      saveBtn.textContent = 'Salvo';
+    }
+
+    saveBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      let saved = JSON.parse(localStorage.getItem('savedMovies') || '[]');
+      if (saved.includes(movie.id)) {
+        saved = saved.filter(id => id !== movie.id);
+        saveBtn.style.background = '';
+        saveBtn.textContent = 'Salvar';
+      } else {
+        saved.push(movie.id);
+        saveBtn.style.background = '#ffe066';
+        saveBtn.textContent = 'Salvo';
+      }
+      localStorage.setItem('savedMovies', JSON.stringify(saved));
+    });
+
+    div.querySelector('div').appendChild(saveBtn);
 
     moviesContainer.appendChild(div);
   });
@@ -107,6 +139,15 @@ async function setupCarousel() {
     carouselInner.appendChild(div);
   });
 }
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.textContent = msg;
+  t.style.cssText = "position:fixed;bottom:20px;right:20px;background:#333;color:#fff;padding:10px 18px;border-radius:6px;z-index:9999;opacity:0.95;";
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 1800);
+}
+
 addEventListener("load", () => {
   setupMovies();
   setupCarousel();

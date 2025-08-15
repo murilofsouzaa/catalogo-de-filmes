@@ -1,6 +1,11 @@
 main{
     width: 90%;
 }
+
+nav{
+    display: flex;
+    justify-content: center;
+}
 .movie-detail-container {
     display: flex;
     margin-left: 120px;
@@ -25,6 +30,15 @@ main{
     margin-top: 20px;
 }
 
+.favorite-save-btn{
+    display: flex;
+}
+
+.img-post{
+    display: flex;
+    flex-direction: row;
+}
+
 #save-flag-btn, #favorite-btn{
     transition: 0.2s ease;
 }
@@ -35,6 +49,40 @@ main{
 
 #save-flag-btn:active, #favorite-btn:active{
     transform: scale(0.85);
+}
+
+@media (max-width: 456px){
+    #movie-detail-container{
+        display: flex;
+    }
+    .main-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .movie-info p{
+        width: 54%;
+    }
+    
+    .movie-title{
+        font-size: 22px;
+    }
+
+    .movie-poster{
+        display: flex;
+        justify-content: center;
+    }
+
+    .img-post{
+        width: 220px;
+    }
+
+    .image-gallery{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
 }
 
 
