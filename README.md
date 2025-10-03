@@ -1,5 +1,5 @@
 # catalogo-de-filmes
-Esse projeto é um catálogo de filmes atualizado usando a API <a href="https://www.themoviedb.org/">The Movie Database</a>. Feito desenvolvido a disciplina de Desenvolvimento de Interfaces Web, com o objetivo de demonstrar o conhecimento adquirido durante as aulas.
+Este projeto é um catálogo de filmes **atualizado** usando a API <a href="https://www.themoviedb.org/">The Movie Database</a>. Feito para a disciplina de Desenvolvimento de Interfaces Web, com o objetivo de demonstrar o conhecimento adquirido durante as aulas.
 
 ---
 
