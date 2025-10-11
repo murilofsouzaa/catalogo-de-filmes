@@ -41,7 +41,7 @@
                 <button id="create-account-btn" class="p-4 rounded-2 btn btn-success">Criar Conta</button>
             </div>
             <div>
-                <p>Já possui uma conta? <a href="/public/index/index.html">Entrar</a></p>
+                <p>Já possui uma conta? <span class="login-btn">Entrar</span></p>
             </div>
         </div>
     </main>
@@ -52,6 +52,32 @@
         </div>
     </aside>
 
+    <div id="login-popup" class="login-popup hidden">
+        <div class="row mb-4 d-flex justify-content-end">
+            <button id="close-popup"><img src="../../src/assets/images/x-circle-fill.svg" alt="close-btn"></button>
+        </div>
+
+        <div class="row">
+            <h2 class="mb-5 text-center">Filmera</h2>
+            <h2 class="text-center">Login</h2>
+        </div>
+
+        <div class="row d-flex justify-content-center align-items-center flex-column w-100">
+            <input type="text" placeholder="Email" class="w-75 mb-4" id="userEmail"/>
+            <input type="password" placeholder="Senha"class="w-75" id="userPassword"/>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <button id="submit-login" class="button-hover-transition p-4 rounded-2">Entrar</button>
+        </div>
+
+        <div class="row">
+            <p>Não possui uma conta? <a href="../sign-in/sign-in.html">Cadastre-se</a></p> 
+        </div>
+    </div>
+
+
+    <script src="../../src/js/login.js"></script>
   <script src="../../src/js/sign_in.js"></script>
 </body>
 </html>

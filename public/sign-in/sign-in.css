@@ -67,6 +67,14 @@ div > p{
   align-items: end;
 }
 
+.login-btn{
+  color: rgb(31, 28, 192);
+}
+
+.login-btn:hover{
+  text-decoration: underline;
+}
+
 #submit-login{
   transition: 0.2s;
 }

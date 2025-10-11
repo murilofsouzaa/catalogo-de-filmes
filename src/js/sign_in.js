@@ -1,4 +1,5 @@
 const createAccountBtn = document.querySelector("#create-account-btn");
+const loginAccountBtn = document.querySelector("#login-account-btn");
 
 const usernameInput = document.querySelector("#userName");
 const userPasswordInput = document.querySelector("#userPassword");
