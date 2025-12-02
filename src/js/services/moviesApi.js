@@ -61,7 +61,7 @@ async function setupMovies() {
 
     div.innerHTML = `
       <div class="p-0 m-0 d-flex flex-column align-items-center text-white mb-5 w-100 position-relative">
-        <a href="../info/info.html?id=${movie.id}" class="d-block w-100">
+        <a href="/public/info/info.html?id=${movie.id}" class="d-block w-100">
           <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" class="card-img-top img-fluid blur" />
         </a>
         <p class="mt-2 mb-0 w-100" style="color:rgba(53, 53, 53, 0.84); text-align: left;">
@@ -132,7 +132,7 @@ async function setupCarousel() {
     if (index === 0) div.classList.add("active");
 
     div.innerHTML = `
-      <a href="../info/info.html?id=${movie.id}">
+      <a href="/public/info/info.html?id=${movie.id}">
         <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" class="d-block img-fluid" alt="${movie.title}">
       </a>
     `;
